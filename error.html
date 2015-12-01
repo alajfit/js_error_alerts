@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <style>
+      .red {
+        color: red;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div><strong class="red">Time:</strong> <span id="time"></span></div>
+    <div><strong class="red">Page:</strong> <span id="page"></span></div>
+    <div id="type"><strong class="red">Type:</strong> Error</div>
+    <div><strong class="red">Message:</strong> <span id="message"></span></div>
+    <div><strong class="red">Line:</strong> <span id="line"></span></div>
+    <div><strong class="red">Version:</strong> <span id="version">1.0.0</span></div>
+    
+    <script>
+      window.onerror = function(message, uri, line) {
+        document.getElementById('time').innerHTML = new Date();
+        document.getElementById('page').innerHTML = location.href;
+        document.getElementById('message').innerHTML = message;
+        document.getElementById('line').innerHTML = line;
+        return false;
+      }
+      
+      window.addEventListener("error", function(e) {
+        console.log(typeof e.message === 'undefined');
+        console.log(e);
+      });
+      
+      foobar
+    </script>
+  </body>
+</html>
